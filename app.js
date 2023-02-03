@@ -1,10 +1,15 @@
+//IMPORTAR DOTENV
+require('dotenv').config();
 //express
 const express = require('express')
 //HBS para los partials
 const hbs = require('hbs');
 
-const app = express()
-const port = 8080;
+
+//express
+const app = express();
+//dotenv
+const port = process.env.PORT;
 
 //handlebar
 //renderizacion con handlebars HBS
