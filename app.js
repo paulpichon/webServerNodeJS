@@ -13,7 +13,11 @@ app.use( express.static('public') );
 
 app.get('/', (req, res) => {
     //renderizar la pagina/respuesta -> handlebars HBS
-    res.render('home');
+    //mandar argumentos/opciones, estos se pueden usar en el HTML de la pagina a la que pertenece
+    res.render('home', {
+        nombre: 'Paúl Pichón',
+        titulo: 'Curso de Node'
+    });
 });
 //
 app.get('/generic', (req, res) => {
