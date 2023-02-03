@@ -2,10 +2,19 @@ const express = require('express')
 const app = express()
 const port = 8080;
 
-//middelware
+//renderizacion con handlebars HBS
+app.set('view engine', 'hbs');
+
+//TODO: require('hbs');
+
 //servir contenido estatico
 app.use( express.static('public') );
 
+
+app.get('/', (req, res) => {
+    //renderizar la pagina/respuesta -> handlebars HBS
+    res.render('home');
+});
 //
 app.get('/generic', (req, res) => {
     res.sendFile( __dirname + '/public/generic.html');
