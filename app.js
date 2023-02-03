@@ -1,11 +1,16 @@
+//express
 const express = require('express')
+//HBS para los partials
+const hbs = require('hbs');
+
 const app = express()
 const port = 8080;
 
+//handlebar
 //renderizacion con handlebars HBS
 app.set('view engine', 'hbs');
-
-//TODO: require('hbs');
+//partials
+hbs.registerPartials(__dirname + '/views/partials');
 
 //servir contenido estatico
 app.use( express.static('public') );
@@ -21,17 +26,30 @@ app.get('/', (req, res) => {
 });
 //
 app.get('/generic', (req, res) => {
-    res.sendFile( __dirname + '/public/generic.html');
+    res.render('generic', {
+        nombre: 'Paúl Pichón',
+        titulo: 'Curso de Node'
+    });
 });
+
+
+
 app.get('/elements', (req, res) => {
-    res.sendFile( __dirname + '/public/elements.html');
+    res.render('elements', {
+        nombre: 'Paúl Pichón',
+        titulo: 'Curso de Node'
+    });
 });
 //*comodin, cualquier otra ruta que no sea las de arriba llegara aqui
 app.get('*', (req, res) => {
     //se puede poner un path para mostra alguna pagina
     //sendFile
     //__dirname para componer el path completo
-    res.sendFile( __dirname + '/public/404.html');
+    //res.sendFile( __dirname + '/views/404.hbs');
+    res.render('404', {
+        nombre: 'Paúl Pichón',
+        titulo: 'Curso de Node'
+    });
 })
 
 app.listen(port, () => {
