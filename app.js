@@ -7,8 +7,11 @@ const port = 8080;
 app.use( express.static('public') );
 
 //
-app.get('/hola-mundo', (req, res) => {
-    res.send('Hola Mundo')
+app.get('/generic', (req, res) => {
+    res.sendFile( __dirname + '/public/generic.html');
+});
+app.get('/elements', (req, res) => {
+    res.sendFile( __dirname + '/public/elements.html');
 });
 //*comodin, cualquier otra ruta que no sea las de arriba llegara aqui
 app.get('*', (req, res) => {
